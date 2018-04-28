@@ -67,7 +67,7 @@ SCRIPTNAME=$(basename "$0")
 
 # Dump report based on SQL query to $reportFile.
 # Report has header as per the query.
-$output=$(psql -U $puser -h $pserver -d $pdb -c "$pquery" > $reportFile)
+output=$(psql -U $puser -h $pserver -d $pdb -c "$pquery" > $reportFile)
 
 # Send mail via mailgun
 sendmail=$(curl -s --user api:$mapikey $murl -F from="$from" -F to="$to" -F subject="$subject" -F text="$text" -F h:Reply-To="$from" -F attachment="@$reportFile")
